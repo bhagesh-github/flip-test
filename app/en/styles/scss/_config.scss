@@ -1,0 +1,220 @@
+// Color definition
+$primarycolor: #2c3e50;
+$textcolor: #363636;
+$linkcolor: $primarycolor;
+$linkhover: $textcolor;
+$gray: #e4e8ea;
+//$lightgray: #e4e8ea;
+//$headercolor: #263344;
+//$blue: #0584fa;
+//$bordercolor: #e7e8e9;
+$white: #fff;
+
+$em-base: 13;
+$footer: false;
+$sans: 'Open Sans', sans-serif;
+
+// Grid
+$grid-columns: 20;
+$grid-gutter-width: 20;
+$container-large-desktop: 1590px;
+
+$container-max-widths: (
+  sm: 100%,
+  md: 1590px,
+  lg: 1590px,
+  xl: 1590px,
+  xxl: 1590px
+);
+
+
+$grid-breakpoints: (
+  // Extra extra small screen / phone
+  xxs: 360px,
+  // Extra small screen / phone
+  xs: 480px,
+  // Small screen / phone
+  sm: 768px,
+  // Medium screen / tablet
+  md: 992px,
+  // Large screen / desktop
+  lg: 1200px,
+  // Extra large screen / wide desktop
+  xl: 1441px,
+  // Extra large screen / wide desktop
+  xxl: 1600px
+);
+
+//FOnt face
+/*@font-face {
+	font-family: 'DINPro';
+	src: url('fonts/hinted-DINPro-Medium.woff') format('woff'),
+		url('fonts/hinted-DINPro-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'DINPro';
+	src: url('fonts/hinted-DINPro-Bold.woff') format('woff'),
+		url('fonts/hinted-DINPro-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'DINPro';
+	src: url('fonts/hinted-DINPro-Regular.woff') format('woff'),
+		url('fonts/hinted-DINPro-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'DINPro';
+	src: url('fonts/hinted-DINPro-Light.woff') format('woff'),
+		url('fonts/hinted-DINPro-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+*/
+// Functions
+// Convert pixels to ems
+// eg. for a relational value of 12px write em(12) when the parent is 16px
+// if the parent is another value say 24px write em(12, 24)
+@function em($pxval, $base: $em-base) {
+   @if not unitless($pxval){
+    $pxval: strip-units($pxval);
+  }
+  @if not unitless($base) {
+    $base: strip-units($base);
+  }
+  @return $pxval / $base * 1em;
+}
+@function rem($size, $base: $em-base) {
+  $remSize: $size / $em-base;
+  @return #{$remSize}rem;
+}
+//Mixins
+//Clearfix
+%clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+//wrap text
+%textwrap {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+// Arrow
+@mixin arrow($direction: top, $size: 10px, $color: #ccc, $center: 50%, $margin: -1px, $pseudo: before, $pos: relative, $zindex: 1) {
+  position: $pos;
+  border-color: $color;
+  &:#{$pseudo} {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border-color: $color;
+    @if $direction == "right" {
+      top: $center;
+      left: 100%;
+      margin-left: $margin;
+      margin-top: $size * -1;
+      border-top: $size solid transparent;
+      border-bottom: $size solid transparent;
+      border-left: $size solid $color;
+      border-left-color: inherit;
+      z-index: $zindex;
+    }
+    @else if $direction == "down" {
+      top: 100%;
+      left: $center;
+      margin-top: $margin;
+      margin-left: $size * -1;
+      border-left: $size solid transparent;
+      border-right: $size solid transparent;
+      border-top: $size solid $color;
+      border-top-color: inherit;
+      z-index: $zindex;
+    }
+    @else if $direction == "left" {
+      top: $center;
+      right: 100%;
+      margin-right: $margin;
+      margin-top: $size * -1;
+      border-top: $size solid transparent;
+      border-bottom: $size solid transparent;
+      border-right: $size solid $color;
+      border-right-color: inherit;
+      z-index: $zindex;
+    }
+    @else {
+      bottom: 100%;
+      left: $center;
+      margin-bottom: $margin;
+      margin-left: $size * -1;
+      border-left: $size solid transparent;
+      border-right: $size solid transparent;
+      border-bottom: $size solid $color;
+      border-bottom-color: inherit;
+      z-index: $zindex;
+    }
+  }
+}
+
+$breakpointsHeight: (
+  // Extra extra small screen / iphone
+  xxs: 320px,
+  // Extra small Devices screen / phone
+  xs: 480px,
+  // Small Devices, Tablets screen / tablet
+  sm: 650px,
+  // Medium Devices, Desktops
+  md: 800px,
+  // Large Devices, Wide screen / desktop
+  lg: 1260px
+);
+
+
+@mixin media-breakpoint-height($breakpoint) {
+  // Retrieves the value from the key
+  $value: map-get($breakpointsHeight, $breakpoint);
+
+  // If the key exists in the map
+  @if $value != null {
+    // Prints a media query based on the value
+    @media only screen and (max-height: $value) {
+      @content;
+    }
+  }
+}
+
+@mixin ipadLand(){
+  @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape){
+    @content;
+  }
+}
+@mixin iphone5Land(){
+  @media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : landscape){
+    @content;
+  }
+}
+@mixin landscape(){
+  @media only screen and (min-device-width : 400px) and (max-device-width : 800px) and (orientation : landscape){
+    @content;
+  }
+}
+
+
+//bootsrap navbar toggle
+$grid-float-breakpoint:    992px;
+//** Point at which the navbar begins collapsing.
+$grid-float-breakpoint-max: 991px;

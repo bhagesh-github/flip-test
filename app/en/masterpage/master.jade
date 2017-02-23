@@ -1,0 +1,25 @@
+doctype html
+html.no-js.loading
+    head
+        title Media Centre | Dubai World Trade Centre
+        link(rel="shortcut icon", href="favicon.ico", type="image/vnd.microsoft.icon")
+        meta(htpp-equiv="Content-type", content="text/html;charset=utf-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1, user-scalable=no")
+        meta(name="keywords", content="Dubai World Trade Media Centre, DWTC Media Centre")
+        meta(name="desciption", content="Welcome to the DWTC media centre, where you will be able to find the latest videos, press release and downloads. Keep yourself updated here!")
+        meta(property="og:image", content="")
+        meta(property="og:title" content="")
+        meta(property="og:url" content="")
+        meta(property="og:site_name" content="")
+
+        include _styleLinks
+        block stylelinks
+
+        block head
+    body.no-js
+        #page-wrap
+            block header
+            block body
+            block footer
+        include _scriptLinks
+        block foot
