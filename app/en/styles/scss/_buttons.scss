@@ -1,0 +1,35 @@
+.btn {
+  position:relative;
+  vertical-align: middle;
+  color:$white;
+  display: inline-block;
+  cursor: pointer;
+  border: 2px solid transparent;
+  font-family: $sans; /*rtl:Tahoma, Geneva, Verdana;*/
+  font-size: 16px;
+  font-weight:500;
+  padding: 25px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition:0.8s;
+  cursor: pointer;
+  min-width:230px;
+}
+.btn-green {
+  background-color:#16a085;
+  border-bottom:3px solid #3bd4b6;
+  padding-bottom:24px;
+  color:$white;
+  &:hover {
+    background-color:#3bd4b6;
+    color:$primarycolor;
+  }
+}
+.btn-blue {
+  background-color:$primarycolor;
+  border-color:$white;
+  &:hover {
+    background-color:$white;
+    color:$primarycolor;
+  }
+}

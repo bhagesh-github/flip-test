@@ -1,1 +1,7 @@
-@import "config"
+@import "scss/breakpoints";
+@import "scss/config";
+@import "scss/legos";
+@import "scss/buttons";
+
+//components scss starts
+@import "../../components/header/header";

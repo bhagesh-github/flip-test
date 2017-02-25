@@ -1,0 +1,30 @@
+header {
+    height:100vh;
+    padding-top:12.9545vh;
+    h1{
+        margin:0 0 5vh;
+    }
+    h2 {
+        color:$white;
+        font:{
+            size:24px;
+            weight:300;
+        }
+        margin-bottom:2.840vh;
+        @include media-breakpoint-up(md){
+            font-size:34px;
+        }
+        @include media-breakpoint-up(lg) {
+           font-size:40px;
+        }
+    }
+    p {
+        color:$white;
+    }
+    .buttons {
+        margin-top:11.3636vh;
+        .btn {
+            margin:0 15px 15px;
+        }
+    }
+}
